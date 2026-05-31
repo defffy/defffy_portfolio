@@ -3,3 +3,4 @@ _site
 src/_includes/build
 .DS_Store
 .env
+.pnpm-store

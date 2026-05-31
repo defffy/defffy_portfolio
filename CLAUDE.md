@@ -21,3 +21,7 @@ node_modules lives in a Docker volume and does not exist on the host filesystem.
 - TypeScript for scripts (compiled via esbuild)
 - pnpm as package manager (inside the container)
 - Source files live in `src/`, output goes to `_site/`
+
+## Commiting
+
+Don't co-author yourself in the commits
