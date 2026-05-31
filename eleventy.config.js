@@ -1,5 +1,6 @@
 import * as sass from "sass";
 import * as esbuild from "esbuild";
+import yaml from "js-yaml";
 import fs from "node:fs";
 
 export default function (eleventyConfig) {
@@ -19,8 +20,28 @@ export default function (eleventyConfig) {
     fs.writeFileSync(`${buildDir}/main.js`, jsResult.code);
   });
 
+  eleventyConfig.addTemplateFormats("yaml");
+
+  eleventyConfig.addExtension("yaml", {
+    read: true,
+    getData(inputPath) {
+      const content = fs.readFileSync(inputPath, "utf8");
+      return yaml.load(content) || {};
+    },
+    compile(inputContent) {
+      return async () => "";
+    },
+  });
+
+  eleventyConfig.ignores.add("src/modules/");
+
+  eleventyConfig.amendLibrary("njk", (env) => {
+    env.loaders[0].searchPaths.push("src");
+  });
+
   eleventyConfig.addWatchTarget("src/css/");
   eleventyConfig.addWatchTarget("src/js/");
+  eleventyConfig.addWatchTarget("src/modules/");
 
   eleventyConfig.setServerOptions({
     host: "0.0.0.0",

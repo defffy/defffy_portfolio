@@ -1,0 +1,7 @@
+layout: page.njk
+title: defffy.com
+
+modules:
+  - type: hero
+    headline: Welcome to defffy.com
+    subtext: A modular, YAML-driven site.

@@ -11,6 +11,9 @@ importers:
       '@11ty/eleventy':
         specifier: ^3.1.5
         version: 3.1.5
+      js-yaml:
+        specifier: ^4.1.1
+        version: 4.1.1
     devDependencies:
       esbuild:
         specifier: ^0.28.0

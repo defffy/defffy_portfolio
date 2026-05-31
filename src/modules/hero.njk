@@ -1,0 +1,8 @@
+<section class="hero"{% if module.background_image %} style="background-image: url('{{ module.background_image }}')"{% endif %}>
+  {% if module.headline %}
+    <h1 class="hero__headline">{{ module.headline }}</h1>
+  {% endif %}
+  {% if module.subtext %}
+    <p class="hero__subtext">{{ module.subtext }}</p>
+  {% endif %}
+</section>

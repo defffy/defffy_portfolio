@@ -1,0 +1,10 @@
+---
+layout: base.njk
+---
+
+{% for module in modules %}
+  {% set knownTypes = ["hero", "text", "split"] %}
+  {% if module.type in knownTypes %}
+    {% include "modules/" + module.type + ".njk" %}
+  {% endif %}
+{% endfor %}
