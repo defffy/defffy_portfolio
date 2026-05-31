@@ -1,0 +1,25 @@
+{
+  "name": "defffy.com",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.22.0",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0",
+    "sass": "^1.100.0",
+    "typescript": "^6.0.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}
