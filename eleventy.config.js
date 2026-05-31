@@ -1,6 +1,7 @@
 import * as sass from "sass";
 import * as esbuild from "esbuild";
 import yaml from "js-yaml";
+import { marked } from "marked";
 import fs from "node:fs";
 
 export default function (eleventyConfig) {
@@ -18,6 +19,13 @@ export default function (eleventyConfig) {
       target: "es2020",
     });
     fs.writeFileSync(`${buildDir}/main.js`, jsResult.code);
+  });
+
+  eleventyConfig.addFilter("renderBody", (body, format) => {
+    if (!body) return "";
+    if (format === "html") return body;
+    const hasMarkdown = /(?:^#{1,6}\s|^\s*[-*+]\s|\*\*.+\*\*|`.+`|^\s*>\s|```|\[.+\]\(.+\))/m.test(body);
+    return hasMarkdown ? marked.parse(body) : body;
   });
 
   eleventyConfig.addTemplateFormats("yaml");

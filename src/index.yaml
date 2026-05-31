@@ -5,3 +5,18 @@ modules:
   - type: hero
     headline: Welcome to defffy.com
     subtext: A modular, YAML-driven site.
+
+  - type: text
+    body: |
+      ## About this site
+
+      This site is built with a **modular, YAML-driven** architecture.
+      Each page is composed of reusable modules defined in a simple YAML file.
+
+      - Define pages as data, not templates
+      - Reorder sections by moving lines
+      - Add new pages in seconds
+
+  - type: text
+    body: "<h2>Raw HTML Section</h2><p>This section uses <code>format: html</code> to bypass Markdown rendering.</p>"
+    format: html

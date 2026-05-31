@@ -1,0 +1,5 @@
+<section class="text">
+  {% if module.body %}
+    <div class="text__body">{{ module.body | renderBody(module.format) | safe }}</div>
+  {% endif %}
+</section>

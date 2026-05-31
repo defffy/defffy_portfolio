@@ -1,0 +1,13 @@
+.text {
+  padding: 4rem 2rem;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.text__body {
+  line-height: 1.8;
+
+  > * + * {
+    margin-top: 1.5rem;
+  }
+}
