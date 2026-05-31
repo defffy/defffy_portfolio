@@ -1,0 +1,17 @@
+{% set position = module.image_position or "right" %}
+<section class="split split--image-{{ position }}">
+  <div class="split__content">
+    {% if module.heading %}
+      <h2 class="split__heading">{{ module.heading }}</h2>
+    {% endif %}
+    {% if module.body %}
+      <div class="split__body">{{ module.body }}</div>
+    {% endif %}
+    {% include "modules/cta.njk" %}
+  </div>
+  {% if module.image %}
+    <div class="split__media">
+      <img class="split__image" src="{{ module.image }}" alt="" />
+    </div>
+  {% endif %}
+</section>

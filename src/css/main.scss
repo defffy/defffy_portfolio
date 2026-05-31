@@ -1,6 +1,8 @@
 @use "variables" as *;
 @use "modules/hero";
 @use "modules/text";
+@use "modules/split";
+@use "modules/cta";
 
 *,
 *::before,

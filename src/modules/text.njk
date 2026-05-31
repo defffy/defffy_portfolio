@@ -2,4 +2,5 @@
   {% if module.body %}
     <div class="text__body">{{ module.body | renderBody(module.format) | safe }}</div>
   {% endif %}
+  {% include "modules/cta.njk" %}
 </section>
