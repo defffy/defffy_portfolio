@@ -1,0 +1,54 @@
+@use "sass:map";
+
+$breakpoints: (
+  // t-shirt sizes
+  "sm": 480px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  // device-specific
+  "mobile-sm": 320px,   // small phones (iPhone SE)
+  "mobile": 375px,      // standard phones (iPhone 12/13/14)
+  "mobile-lg": 425px,   // large phones (Pro Max)
+  "phablet": 600px,     // large phones / small tablets portrait
+  "tablet": 768px,      // tablets portrait (iPad)
+  "tablet-lg": 1024px,  // tablets landscape (iPad Pro)
+  "laptop": 1280px,     // laptops
+  "desktop": 1440px,    // desktops
+  "wide": 1920px,       // large / full-HD monitors
+);
+
+// Apply styles at or above a named breakpoint (min-width).
+@mixin above($name) {
+  @if map.has-key($breakpoints, $name) {
+    @media (min-width: map.get($breakpoints, $name)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$name}`. Available: #{map.keys($breakpoints)}.";
+  }
+}
+
+// Apply styles below a named breakpoint (max-width).
+@mixin below($name) {
+  @if map.has-key($breakpoints, $name) {
+    @media (max-width: map.get($breakpoints, $name) - 1px) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$name}`. Available: #{map.keys($breakpoints)}.";
+  }
+}
+
+// Apply styles within a device range, e.g. @include between("tablet", "laptop");
+@mixin between($from, $to) {
+  @if not map.has-key($breakpoints, $from) {
+    @error "Unknown breakpoint `#{$from}`. Available: #{map.keys($breakpoints)}.";
+  }
+  @if not map.has-key($breakpoints, $to) {
+    @error "Unknown breakpoint `#{$to}`. Available: #{map.keys($breakpoints)}.";
+  }
+  @media (min-width: map.get($breakpoints, $from)) and (max-width: map.get($breakpoints, $to) - 1px) {
+    @content;
+  }
+}
