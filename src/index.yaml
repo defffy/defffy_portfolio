@@ -3,40 +3,7 @@ title: defffy.com
 
 modules:
   - type: hero
-    headline: Welcome to defffy.com
-    subtext: A modular, YAML-driven site.
+    headline: Computational artist exploring systems, algorithms, and code. Honolulu, Hawaiʻi.
     cta:
       text: Get Started
       url: "#about"
-
-  - type: text
-    body: |
-      ## About this site
-
-      This site is built with a **modular, YAML-driven** architecture.
-      Each page is composed of reusable modules defined in a simple YAML file.
-
-      - Define pages as data, not templates
-      - Reorder sections by moving lines
-      - Add new pages in seconds
-    cta:
-      text: Learn More
-      url: "#learn"
-
-  - type: split
-    heading: Easy to Use
-    body: Define your pages with simple YAML files. Each module is a building block you can mix and match.
-    image: https://placehold.co/600x400
-    cta:
-      text: View Docs
-      url: "#docs"
-
-  - type: split
-    heading: Fully Modular
-    body: Add, remove, or reorder sections by editing a single YAML file. No template code required.
-    image: https://placehold.co/600x400
-    image_position: left
-
-  - type: text
-    body: "<h2>Raw HTML Section</h2><p>This section uses <code>format: html</code> to bypass Markdown rendering.</p>"
-    format: html
