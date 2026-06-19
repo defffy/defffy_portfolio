@@ -1,29 +1,29 @@
 services:
   dev:
-    image: node:22-alpine
+    build: .
     working_dir: /src
     volumes:
       - .:/src
       - node_modules:/src/node_modules
     ports:
       - "8080:8080"
-    command: sh -c "corepack enable && pnpm install && pnpm dev"
+    command: sh -c "pnpm install && pnpm dev"
 
   install:
-    image: node:22-alpine
+    build: .
     working_dir: /src
     volumes:
       - .:/src
       - node_modules:/src/node_modules
-    entrypoint: sh -c "corepack enable && if [ $$# -eq 0 ]; then pnpm install; else pnpm add $$*; fi" --
+    entrypoint: sh -c "if [ $$# -eq 0 ]; then pnpm install; else pnpm add $$*; fi" --
 
   build:
-    image: node:22-alpine
+    build: .
     working_dir: /src
     volumes:
       - .:/src
       - node_modules:/src/node_modules
-    command: sh -c "corepack enable && pnpm install && pnpm build"
+    command: sh -c "pnpm install && pnpm build"
 
 volumes:
   node_modules:
