@@ -1,0 +1,192 @@
+{#=============================================================================
+  ImageKit responsive <picture> macro
+  https://imagekit.io/
+
+  Renders a <picture> element with one <source> per breakpoint, each pointing at
+  an ImageKit URL carrying the requested width / height / quality transforms.
+  A retina (2x) candidate is emitted for every source via ImageKit's `dpr`
+  transform. The final <img> is the fallback for browsers that ignore <source>.
+
+  ---------------------------------------------------------------------------
+  USAGE
+  ---------------------------------------------------------------------------
+    {% from "macros/image.njk" import picture %}
+
+    {# minimal — just a src, everything else defaults #}
+    {{ picture({ src: "photos/hero.jpg", alt: "A hero" }) }}
+
+    {# a named preset #}
+    {{ picture({ src: "photos/avatar.jpg", alt: "Me", preset: "thumbnail" }) }}
+
+    {# full breakpoint schema #}
+    {{ picture({
+      src: "photos/hero.jpg",
+      alt: "A hero",
+      quality: 80,
+      sizes: "100vw",
+      breakpoints: [
+        { media: "(max-width: 600px)",  width: 480,  height: 320, quality: 65 },
+        { media: "(max-width: 1200px)", width: 960,  height: 640 },
+        {                               width: 1600, height: 1067 }
+      ]
+    }) }}
+
+  ---------------------------------------------------------------------------
+  YAML SCHEMA (the `image` object)
+  ---------------------------------------------------------------------------
+    src:         required. Path relative to the ImageKit endpoint, or an
+                 absolute http(s) URL (used as-is).
+    alt:         recommended. Alt text (defaults to "").
+    preset:      optional. Name of a preset below (thumbnail, avatar, card,
+                 banner, full). Preset values are the base; per-image values
+                 and an explicit `breakpoints` list override them.
+    quality:     optional. Default quality (1-100) for every breakpoint.
+    crop:        optional. ImageKit crop mode (at_max, at_least,
+                 maintain_ratio, force, extract). Default "at_max".
+    format:      optional. Output format. Default "auto" (WebP/AVIF negotiation).
+    sizes:       optional. `sizes` attribute for the <img>. Default "100vw".
+    lazy:        optional. loading="lazy" when true (default), else "eager".
+    retina:      optional. Emit a 2x (dpr-2) candidate. Default true.
+    width/height:optional. Intrinsic size for the fallback <img> (prevents CLS).
+                 Falls back to the largest breakpoint.
+    class:       optional. Class applied to the <img>.
+    breakpoints: optional list. Each entry:
+        media:   media query for the <source>. Omit on the last entry to make
+                 it the default source. If every entry omits media, only an
+                 <img> is rendered.
+        width:   target width in px.
+        height:  target height in px (optional).
+        quality: per-breakpoint quality override (optional).
+        crop:    per-breakpoint crop override (optional).
+
+  ---------------------------------------------------------------------------
+  CONFIG OVERRIDE (2nd arg)
+  ---------------------------------------------------------------------------
+    Pass a config object to override the endpoint / global defaults, e.g. from
+    a global data file: {{ picture(module.image, imagekit) }}
+      { endpoint, quality, crop, format, sizes }
+=============================================================================#}
+
+
+{#-- Build an ImageKit `tr` transform string from parts, skipping empties. --#}
+{% macro _tr(w, h, q, crop, format, dpr) -%}
+  {%- set parts = [] -%}
+  {%- if w      -%}{%- set parts = parts.concat("w-"   ~ w)      -%}{%- endif -%}
+  {%- if h      -%}{%- set parts = parts.concat("h-"   ~ h)      -%}{%- endif -%}
+  {%- if q      -%}{%- set parts = parts.concat("q-"   ~ q)      -%}{%- endif -%}
+  {%- if crop   -%}{%- set parts = parts.concat("c-"   ~ crop)   -%}{%- endif -%}
+  {%- if format -%}{%- set parts = parts.concat("f-"   ~ format) -%}{%- endif -%}
+  {%- if dpr and dpr != 1 -%}{%- set parts = parts.concat("dpr-" ~ dpr) -%}{%- endif -%}
+  {{- parts | join(",") -}}
+{%- endmacro %}
+
+
+{#-- Join an endpoint + src into a base URL (absolute src passes through). --#}
+{% macro _base(endpoint, src) -%}
+  {%- if "://" in src -%}
+    {{- src -}}
+  {%- else -%}
+    {%- set clean = src.slice(1) if src.charAt(0) == "/" else src -%}
+    {%- set root  = endpoint.slice(0, -1) if endpoint.charAt(endpoint.length - 1) == "/" else endpoint -%}
+    {{- root ~ "/" ~ clean -}}
+  {%- endif -%}
+{%- endmacro %}
+
+
+{#-- Full ImageKit URL: base + ?tr=... (skips the query when no transforms). --#}
+{% macro ikurl(endpoint, src, w=none, h=none, q=none, crop=none, format=none, dpr=none) -%}
+  {%- set base = _base(endpoint, src) | trim -%}
+  {%- set tr = _tr(w, h, q, crop, format, dpr) | trim -%}
+  {%- if tr -%}{{- base ~ "?tr=" ~ tr -}}{%- else -%}{{- base -}}{%- endif -%}
+{%- endmacro %}
+
+
+{% macro picture(image, config={}) %}
+  {#-- Built-in sensible defaults (overridable via the `config` arg). --#}
+  {% set cfg = {
+    endpoint: config.endpoint or "https://ik.imagekit.io/xnpk4vxou",
+    quality:  config.quality  or 80,
+    crop:     config.crop     or "at_max",
+    format:   config.format   or "auto",
+    sizes:    config.sizes    or "100vw"
+  } %}
+
+  {#-- Built-in presets: each supplies default breakpoints + tuning. --#}
+  {% set presets = {
+    thumbnail: {
+      sizes: "160px",
+      breakpoints: [ { width: 160, height: 160, crop: "maintain_ratio" } ]
+    },
+    avatar: {
+      sizes: "96px",
+      breakpoints: [ { width: 96, height: 96, crop: "maintain_ratio" } ]
+    },
+    card: {
+      sizes: "(max-width: 600px) 100vw, 400px",
+      breakpoints: [
+        { media: "(max-width: 600px)", width: 600, height: 400 },
+        {                              width: 400, height: 267 }
+      ]
+    },
+    banner: {
+      sizes: "100vw",
+      breakpoints: [
+        { media: "(max-width: 600px)",  width: 800,  height: 400 },
+        { media: "(max-width: 1200px)", width: 1400, height: 500 },
+        {                               width: 2000, height: 600 }
+      ]
+    },
+    full: {
+      sizes: "100vw",
+      breakpoints: [
+        { media: "(max-width: 600px)",  width: 640 },
+        { media: "(max-width: 1200px)", width: 1280 },
+        {                               width: 1920 }
+      ]
+    }
+  } %}
+
+  {% set preset = presets[image.preset] if image.preset and presets[image.preset] else {} %}
+
+  {#-- Resolve settings: per-image > preset > config default. --#}
+  {% set quality = image.quality or preset.quality or cfg.quality %}
+  {% set crop    = image.crop    or preset.crop    or cfg.crop %}
+  {% set format  = image.format  or preset.format  or cfg.format %}
+  {% set sizes   = image.sizes   or preset.sizes   or cfg.sizes %}
+  {% set retina  = false if image.retina == false else true %}
+  {% set lazy    = false if image.lazy == false else true %}
+  {% set bps     = image.breakpoints or preset.breakpoints or [{}] %}
+
+  {#-- The last breakpoint is the fallback <img> source. --#}
+  {% set last = bps[bps.length - 1] %}
+  {% set imgW = image.width or last.width %}
+  {% set imgH = image.height or last.height %}
+
+  <picture>
+    {%- for bp in bps -%}
+      {%- if bp.media -%}
+        {%- set w = bp.width -%}
+        {%- set h = bp.height -%}
+        {%- set q = bp.quality or quality -%}
+        {%- set c = bp.crop or crop -%}
+        {%- set url1x = ikurl(cfg.endpoint, image.src, w, h, q, c, format) | trim -%}
+        <source media="{{ bp.media }}"
+          {%- if sizes %} sizes="{{ sizes }}"{% endif %}
+          srcset="{{ url1x }} 1x
+          {%- if retina %}, {{ ikurl(cfg.endpoint, image.src, w, h, q, c, format, 2) | trim }} 2x{% endif %}">
+      {%- endif -%}
+    {%- endfor -%}
+    {%- set fq = last.quality or quality -%}
+    {%- set fc = last.crop or crop -%}
+    {%- set imgSrc = ikurl(cfg.endpoint, image.src, imgW, imgH, fq, fc, format) | trim -%}
+    <img src="{{ imgSrc }}"
+      {%- if retina %} srcset="{{ imgSrc }} 1x, {{ ikurl(cfg.endpoint, image.src, imgW, imgH, fq, fc, format, 2) | trim }} 2x"{% endif %}
+      {%- if sizes %} sizes="{{ sizes }}"{% endif %}
+      {%- if imgW %} width="{{ imgW }}"{% endif %}
+      {%- if imgH %} height="{{ imgH }}"{% endif %}
+      alt="{{ image.alt or '' }}"
+      loading="{{ 'lazy' if lazy else 'eager' }}"
+      decoding="async"
+      {%- if image.class %} class="{{ image.class }}"{% endif %}>
+  </picture>
+{% endmacro %}
