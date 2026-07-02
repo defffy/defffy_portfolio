@@ -7,7 +7,9 @@
     <style>{% include "build/main.css" %}</style>
   </head>
   <body>
-    {{ content | safe }}
+    {% include "partials/header.njk" %}
+    <main>{{ content | safe }}</main>
+    {% include "partials/footer.njk" %}
     <script>{% include "build/main.js" %}</script>
   </body>
 </html>

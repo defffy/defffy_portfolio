@@ -1,5 +1,7 @@
 @use "utils/tokens" as *;
 @use "utils/type" as *;
+@use "partials/header";
+@use "partials/footer";
 @use "modules/grid";
 @use "modules/single-column";
 @use "modules/spacer";
@@ -17,4 +19,12 @@ body {
   font-family: $font-sans;
   color: $color-text;
   background: $color-bg;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+main {
+  flex: 1 0 auto;
 }

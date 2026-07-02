@@ -28,6 +28,8 @@ export default function (eleventyConfig) {
     return hasMarkdown ? marked.parse(body) : body;
   });
 
+  eleventyConfig.addGlobalData("currentYear", () => new Date().getFullYear());
+
   eleventyConfig.addTemplateFormats("yaml");
 
   eleventyConfig.addExtension("yaml", {

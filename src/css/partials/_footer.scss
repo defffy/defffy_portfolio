@@ -1,0 +1,40 @@
+@use "../utils/container" as *;
+@use "../utils/type" as *;
+@use "../utils/spacing" as *;
+@use "../utils/tokens" as *;
+
+.site-footer {
+  @include container();
+  padding-block: space("lg");
+  display: flex;
+  flex-wrap: wrap;
+  gap: space("md");
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-footer__note {
+  @include font("body");
+}
+
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  gap: space("sm");
+  list-style: none;
+}
+
+.site-footer__link {
+  display: inline-flex;
+  color: $color-text;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline
+  }
+}
+
+.site-footer__icon {
+  display: block;
+}
