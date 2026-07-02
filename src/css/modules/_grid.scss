@@ -18,6 +18,10 @@
   gap: 2rem;
   grid-template-columns: 1fr;
 
+  // Size each cell to its content so the stretched card link doesn't cover
+  // the empty space below shorter cards in the same row.
+  align-items: start;
+
   @include above("phablet") {
     grid-template-columns: repeat(2, 1fr);
   }
