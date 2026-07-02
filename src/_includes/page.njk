@@ -3,7 +3,7 @@ layout: base.njk
 ---
 
 {% for module in modules %}
-  {% set knownTypes = ["grid", "hero", "single-column", "spacer", "split"] %}
+  {% set knownTypes = ["grid", "hero", "single-column", "spacer"] %}
   {% if module.type in knownTypes %}
     {% include "modules/" + module.type + ".njk" %}
   {% endif %}
