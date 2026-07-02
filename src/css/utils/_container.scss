@@ -19,4 +19,5 @@ $containers: (
   width: 100%;
   max-width: map.get($containers, $width);
   margin-inline: auto;
+  padding-inline: space("md");
 }
