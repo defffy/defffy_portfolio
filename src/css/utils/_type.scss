@@ -1,49 +1,59 @@
 @use "sass:list";
 @use "sass:map";
 
-// font-size / line-height pairs, keyed by semantic role. Elements pick a role
-// here instead of setting their own font-size or line-height.
+// font-size / line-height / font-weight triples, keyed by semantic role.
+// Elements pick a role here instead of setting their own font-size,
+// line-height, or weight. Headings carry the heavier 500; body roles stay 400.
 $type-scale: (
   "h1": (
     3rem,
     1.1,
+    500,
   ),
   "h2": (
     2rem,
     1.2,
+    500,
   ),
   "h3": (
     1.5rem,
     1.3,
+    500,
   ),
   "h4": (
     1.25rem,
     1.3,
+    500,
   ),
   "subhead-small": (
     1.125rem,
     1.4,
+    400,
   ),
   "body-large": (
     1.25rem,
     1.6,
+    400,
   ),
   "body": (
     1rem,
     1.6,
+    400,
   ),
   "body-small": (
     0.875rem,
     1.6,
+    400,
   ),
 );
 
-// Apply a named font-size + line-height pair.
+// Apply a named font-size + line-height + font-weight triple.
 @mixin font($name) {
   @if not map.has-key($type-scale, $name) {
     @error "Unknown type style `#{$name}`. Available: #{map.keys($type-scale)}.";
   }
-  $pair: map.get($type-scale, $name);
-  font-size: list.nth($pair, 1);
-  line-height: list.nth($pair, 2);
+  $triple: map.get($type-scale, $name);
+  font-size: list.nth($triple, 1);
+  line-height: list.nth($triple, 2);
+  font-weight: list.nth($triple, 3);
 }
