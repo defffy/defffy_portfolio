@@ -3,11 +3,11 @@ title: defffy.com
 
 modules:
   - type: spacer
-    size: sm
+    size: lg
   - type: single-column 
     heading: Computational artist exploring systems, algorithms, and code. Honolulu, Hawaiʻi.
   - type: spacer
-    size: xl
+    size: lg 
   - type: grid
     cells:
       - image:
