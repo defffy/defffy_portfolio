@@ -1,0 +1,26 @@
+@use "../utils/tokens" as *;
+@use "../utils/container" as *;
+@use "../utils/type" as *;
+
+.project-hero {
+  @include container("wide");
+}
+
+.project-hero__media {
+  margin-bottom: 1.5rem;
+
+  img {
+    width: 90%;
+    height: auto;
+    display: block;
+  }
+}
+
+.project-hero__title {
+  @include font("h2");
+}
+
+.project-hero__subhead {
+  @include font("body");
+  color: $color-muted;
+}

@@ -1,0 +1,18 @@
+{% from "macros/image.njk" import picture %}
+
+<section class="project-hero">
+  {% if module.image %}
+    <div class="project-hero__media">
+      {{ picture(module.image, { sizes: "100vw" }) }}
+    </div>
+  {% endif %}
+
+  <div class="project-hero__text">
+    {% if module.title %}
+      <h1 class="project-hero__title">{{ module.title }}</h1>
+    {% endif %}
+    {% if module.subhead %}
+      <p class="project-hero__subhead">{{ module.subhead }}</p>
+    {% endif %}
+  </div>
+</section>
