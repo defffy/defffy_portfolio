@@ -2,8 +2,30 @@ layout: page.njk
 title: defffy.com
 
 modules:
-  - type: hero
-    headline: Computational artist exploring systems, algorithms, and code. Honolulu, Hawaiʻi.
-    cta:
-      text: Get Started
-      url: "#about"
+  - type: spacer
+    size: sm
+  - type: single-column 
+    heading: Computational artist exploring systems, algorithms, and code. Honolulu, Hawaiʻi.
+  - type: spacer
+    size: xl
+  - type: grid
+    cells:
+      - image:
+          src: Chrono%20Convergence/chrono_convergence_27_119969.png 
+          alt: ""
+          preset: card
+        aria-label: View the Chrono Convergence project
+        link: /work/chrono-convergence
+      - image:
+          src: First%20Earth/fe_drive_through_the_country.png 
+          alt: ""
+          preset: card
+          quality: 80
+        aria-label: View the First Earth project
+        link: /work/first-earth
+      - image:
+          src: Strata/strata_01.jpg 
+          alt: ""
+          preset: card
+        aria-label: View the Strata project
+        link: /work/strata
