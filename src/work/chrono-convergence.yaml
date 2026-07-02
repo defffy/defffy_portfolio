@@ -1,0 +1,45 @@
+layout: page.njk
+title: Chrono Convergence 
+
+modules:
+  - type: spacer
+    size: lg
+
+  - type: project-hero
+    image:
+      src: Chrono%20Convergence/chrono_convergence_27_119969.png
+      alt: ''
+      preset: banner
+    title: Chrono Convergence 
+    subhead: July 2025
+
+  - type: spacer
+    size: sm
+
+  - type: single-column
+    body: A collection of algorithmic outputs made with code using processing and inspired by Sumi-e. Each piece is made by 3 layers of random walkers of with various different attributes. There are meant to represent the past, present and future all occupying the same space.
+
+  - type: spacer
+    size: lg
+
+  - type: image-grid
+    heading: Selected works
+    columns: 3
+    images:
+      - src: Chrono%20Convergence/chrono_convergence_27_119969.png
+        alt: ''
+        caption: Seed 119969 
+      - src: Chrono%20Convergence/chrono_convergence_26_287571.png
+        alt: '' 
+        caption: Seed 287571 
+      - src: Chrono%20Convergence/chrono_convergence_27_248129.png
+        alt: ''
+        caption: Seed 248129
+      - src: Chrono%20Convergence/chrono_convergence_26__ofp222954.png
+        alt: ''
+        caption: Seed 222954
+      - src: Chrono%20Convergence/chrono_convergence_27_86779.png
+        caption: Seed 86779 
+
+  - type: spacer
+    size: xl
