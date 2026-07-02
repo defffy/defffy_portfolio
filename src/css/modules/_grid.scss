@@ -1,14 +1,14 @@
 @use "../utils/tokens" as *;
 @use "../utils/breakpoints" as *;
 @use "../utils/container" as *;
+@use "../utils/type" as *;
 
 .grid-module {
   @include container("wide");
 }
 
 .grid-module__heading {
-  font-size: 2rem;
-  line-height: 1.2;
+  @include font("h2");
   margin-bottom: 2rem;
 }
 
@@ -48,8 +48,7 @@
 }
 
 .grid__title {
-  font-size: 1.25rem;
-  line-height: 1.3;
+  @include font("h4");
   margin-bottom: 0.5rem;
 }
 
@@ -81,6 +80,6 @@
 }
 
 .grid__body {
+  @include font("body");
   color: $color-muted;
-  line-height: 1.6;
 }

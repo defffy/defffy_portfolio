@@ -1,4 +1,5 @@
 @use "utils/tokens" as *;
+@use "utils/type" as *;
 @use "modules/grid";
 @use "modules/single-column";
 @use "modules/spacer";
@@ -12,8 +13,8 @@
 }
 
 body {
+  @include font("body");
   font-family: $font-sans;
   color: $color-text;
   background: $color-bg;
-  line-height: 1.6;
 }

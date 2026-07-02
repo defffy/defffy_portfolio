@@ -1,18 +1,18 @@
 @use "../utils/container" as *;
+@use "../utils/type" as *;
 
 .single-column {
   @include container();
 }
 
 .single-column__heading {
-  font-size: 3rem;
-  line-height: 1.2;
+  @include font("h1");
   margin-bottom: 1rem;
   max-width: 50ch;
 }
 
 .single-column__body {
-  line-height: 1.8;
+  @include font("body");
 
   > * + * {
     margin-top: 1.5rem;
