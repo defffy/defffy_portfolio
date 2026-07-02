@@ -1,13 +1,14 @@
+@use "../utils/container" as *;
+
 .single-column {
-  padding: 4rem 2rem;
-  max-width: 48rem;
-  margin: 0 auto;
+  @include container();
 }
 
 .single-column__heading {
-  font-size: 2rem;
+  font-size: 3rem;
   line-height: 1.2;
   margin-bottom: 1rem;
+  max-width: 50ch;
 }
 
 .single-column__body {

@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "spacing" as *;
+
+// Named content max-widths. Modules pick one of these instead of inventing
+// their own rem value.
+$containers: (
+  "narrow": 48rem,  // single-column reading width
+  "wide": 72rem,    // multi-column / grid layouts
+  "full": none,     // full-bleed sections (e.g. hero)
+);
+
+// Constrain a module's content: cap the width, centre it horizontally, and
+// apply the shared section padding (vertical rhythm + edge gutter) from the
+// spacing scale — so no module hard-codes its own layout values.
+@mixin container($width: "wide") {
+  @if not map.has-key($containers, $width) {
+    @error "Unknown container `#{$width}`. Available: #{map.keys($containers)}.";
+  }
+  width: 100%;
+  max-width: map.get($containers, $width);
+  margin-inline: auto;
+}

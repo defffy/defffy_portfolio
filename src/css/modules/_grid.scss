@@ -1,10 +1,9 @@
 @use "../utils/tokens" as *;
 @use "../utils/breakpoints" as *;
+@use "../utils/container" as *;
 
 .grid-module {
-  padding: 4rem 2rem;
-  max-width: 72rem;
-  margin: 0 auto;
+  @include container("wide");
 }
 
 .grid-module__heading {
