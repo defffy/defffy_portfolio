@@ -1,6 +1,8 @@
 @use "utils/tokens" as *;
 @use "modules/hero";
-@use "modules/text";
+@use "modules/grid";
+@use "modules/single-column";
+@use "modules/spacer";
 @use "modules/split";
 @use "modules/cta";
 

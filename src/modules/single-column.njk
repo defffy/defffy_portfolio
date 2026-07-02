@@ -1,0 +1,8 @@
+<section class="single-column">
+  {% if module.heading %}
+    <h2 class="single-column__heading">{{ module.heading }}</h2>
+  {% endif %}
+  {% if module.body %}
+    <div class="single-column__body">{{ module.body | safe }}</div>
+  {% endif %}
+</section>

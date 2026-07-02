@@ -1,0 +1,87 @@
+@use "../utils/tokens" as *;
+@use "../utils/breakpoints" as *;
+
+.grid-module {
+  padding: 4rem 2rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.grid-module__heading {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  list-style: none;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+
+  @include above("phablet") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include above("tablet-lg") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid__cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid__cell--linked {
+  // Establishes the containing block for the stretched link overlay.
+  position: relative;
+}
+
+.grid__media {
+  margin-bottom: 1rem;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.grid__title {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.grid__link {
+  color: inherit;
+  text-decoration: none;
+
+  // Stretch the link over the whole cell so the entire card is clickable,
+  // while keeping a single real anchor whose accessible name is the title.
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  // Keyboard focus ring is drawn on the overlay, framing the whole cell.
+  &:focus-visible {
+    outline: none;
+
+    &::after {
+      outline: 2px solid $color-accent;
+      outline-offset: 4px;
+    }
+  }
+}
+
+.grid__cell--linked:hover .grid__title {
+  text-decoration: underline;
+}
+
+.grid__body {
+  color: $color-muted;
+  line-height: 1.6;
+}

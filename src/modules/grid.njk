@@ -1,0 +1,38 @@
+{% from "macros/image.njk" import picture %}
+
+<section class="grid-module">
+  {% if module.heading %}
+    <h2 class="grid-module__heading">{{ module.heading }}</h2>
+  {% endif %}
+
+  <ul class="grid">
+    {% for cell in module.cells %}
+      {% set label = cell["aria-label"] %}
+      <li class="grid__cell{% if cell.link %} grid__cell--linked{% endif %}">
+        {% if cell.image %}
+          <div class="grid__media">
+            {{ picture(cell.image, { sizes: "(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" }) }}
+          </div>
+        {% endif %}
+
+        {% if cell.title %}
+          <h3 class="grid__title">
+            {% if cell.link %}
+              <a class="grid__link" href="{{ cell.link }}"{% if label %} aria-label="{{ label }}"{% endif %}>{{ cell.title }}</a>
+            {% else %}
+              {{ cell.title }}
+            {% endif %}
+          </h3>
+        {% elif cell.link %}
+          {# No visible title: emit a bare stretched link. Its accessible name
+             comes from aria-label (falling back to the image alt text). #}
+          <a class="grid__link" href="{{ cell.link }}"{% if label %} aria-label="{{ label }}"{% endif %}></a>
+        {% endif %}
+
+        {% if cell.body %}
+          <p class="grid__body">{{ cell.body }}</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>

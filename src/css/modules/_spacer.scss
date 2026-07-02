@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "../utils/spacing" as *;
+
+// One vertical-space modifier per spacing token (xs, sm, md, lg, xl).
+.spacer {
+  @each $name, $size in $spacing {
+    &--#{$name} {
+      height: $size;
+    }
+  }
+}
