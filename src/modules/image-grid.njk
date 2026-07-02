@@ -1,0 +1,44 @@
+{% from "macros/image.njk" import picture, ikurl %}
+
+<section class="image-grid">
+  {% if module.heading %}
+    <h2 class="image-grid__heading">{{ module.heading }}</h2>
+  {% endif %}
+
+  <ul
+    class="image-grid__list"
+    data-lightbox-grid
+    {%- if module.columns %} style="--image-grid-columns: {{ module.columns }}"{% endif %}>
+    {% for image in module.images %}
+      {# Full-size candidate loaded lazily by the lightbox on open. The endpoint
+         mirrors the default baked into the image macro. #}
+      {% set fullSrc = ikurl("https://ik.imagekit.io/xnpk4vxou", image.src, 1600, none, 82, "at_max", "auto") | trim %}
+      <li class="image-grid__item">
+        <button
+          type="button"
+          class="image-grid__trigger"
+          data-lightbox-trigger
+          data-full-src="{{ fullSrc }}"
+          data-full-alt="{{ image.alt or '' }}"
+          data-caption="{{ image.caption or '' }}"
+          aria-label="{{ image.caption or image.alt or 'Image' }} — view larger">
+          {#-- Default widths matched to the tile size at each column count
+               (1 col ≤600, 2 col ≤1024, 3 col above). retina/dpr-2 doubles
+               these. A per-image `preset` or `breakpoints` in YAML overrides. #}
+          {{ picture(image, {
+            sizes: "(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw",
+            breakpoints: [
+              { media: "(max-width: 600px)", width: 640 },
+              { media: "(max-width: 1024px)", width: 540 },
+              { width: 420 }
+            ]
+          }) }}
+        </button>
+
+        {% if image.caption %}
+          <figcaption class="image-grid__caption">{{ image.caption }}</figcaption>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>

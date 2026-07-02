@@ -64,7 +64,9 @@
   ---------------------------------------------------------------------------
     Pass a config object to override the endpoint / global defaults, e.g. from
     a global data file: {{ picture(module.image, imagekit) }}
-      { endpoint, quality, crop, format, sizes }
+      { endpoint, quality, crop, format, sizes, breakpoints }
+    `breakpoints` here is a module-level default (same schema as the per-image
+    list); a per-image `preset` or `breakpoints` still takes precedence.
 =============================================================================#}
 
 
@@ -155,7 +157,7 @@
   {% set sizes   = image.sizes   or preset.sizes   or cfg.sizes %}
   {% set retina  = false if image.retina == false else true %}
   {% set lazy    = false if image.lazy == false else true %}
-  {% set bps     = image.breakpoints or preset.breakpoints or [{}] %}
+  {% set bps     = image.breakpoints or preset.breakpoints or config.breakpoints or [{}] %}
 
   {#-- The last breakpoint is the fallback <img> source. --#}
   {% set last = bps[bps.length - 1] %}

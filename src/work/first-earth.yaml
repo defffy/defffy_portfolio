@@ -1,0 +1,53 @@
+layout: page.njk
+title: First Earth 
+
+modules:
+  - type: spacer
+    size: lg
+
+  - type: project-hero
+    image:
+      src: First%20Earth/muted_rainbows_300-ppi.png
+      alt: ''
+      preset: banner
+    title: First Earth
+    subhead: August 2025
+
+  - type: spacer
+    size: sm
+
+  - type: single-column
+    body: A generative series reflecting on digital terrains and the emergence of order from algorithmic chaos. Each piece is made with code using Processing.
+
+  - type: spacer
+    size: lg
+
+  - type: image-grid
+    heading: Selected works
+    columns: 3
+    images:
+      - src: First%20Earth/muted_rainbows_300-ppi.png
+        alt: Muted rainbows
+        caption: Muted Rainbows
+      - src: First%20Earth/finish_line_300-ppi.png
+        alt: Finish Line 
+        caption: Finish Line 
+      - src: First%20Earth/fe_off_and_on.png
+        alt: Off and On 
+        caption: Off and On 
+      - src: First%20Earth/fe_fire_and_ice.png
+        alt: First and Ice
+        caption: Fire and Ice
+      - src: First%20Earth/my_stained_favorite_shirt_300-ppi.png
+        alt: My stained favorite shirt
+        caption: My stained favorite shirt
+      - src: First%20Earth/alter_ego_300-ppi.png
+        alt: Alter Ego 
+        caption: Alter Ego 
+      - src: First%20Earth/fe_drive_through_the_country.png
+        alt: Drive Through The Country
+        caption: Drive Through The Country
+
+
+  - type: spacer
+    size: xl
