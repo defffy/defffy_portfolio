@@ -8,11 +8,12 @@
 .single-column__heading {
   @include font("body-large");
   margin-bottom: 1rem;
-  max-width: 75ch;
+  max-width: 60ch;
 }
 
 .single-column__body {
   @include font("body");
+  max-width: 75ch;
 
   > * + * {
     margin-top: 1.5rem;
