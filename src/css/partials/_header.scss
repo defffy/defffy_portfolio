@@ -1,16 +1,74 @@
 @use "../utils/container" as *;
 @use "../utils/type" as *;
 @use "../utils/spacing" as *;
+@use "../utils/tokens" as *;
+@use "../utils/breakpoints" as *;
 
 .site-header {
   @include container();
   padding-block: space("lg");
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: space("md");
 }
 
 .site-header__brand {
   @include font("h4");
   color: inherit;
   text-decoration: none;
+}
+
+.site-header__toggle {
+  @include font("body");
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+
+  @include above("md") {
+    display: none;
+  }
+}
+
+.site-header__toggle-label[hidden] {
+  display: none;
+}
+
+.site-nav {
+  @include below("md") {
+    flex-basis: 100%;
+    display: none;
+
+    &.is-open {
+      display: block;
+    }
+  }
+}
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: space("md");
+  list-style: none;
+
+  @include below("md") {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: space("sm");
+    padding-block: space("sm");
+  }
+}
+
+.site-nav__link {
+  @include font("body");
+  color: $color-text;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
 }

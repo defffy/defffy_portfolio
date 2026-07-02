@@ -1,3 +1,22 @@
 <header class="site-header">
-  <a class="site-header__brand" href="/">defffy</a>
+  <a class="site-header__brand" href="/">Defffy</a>
+
+  <button
+    class="site-header__toggle"
+    type="button"
+    aria-controls="site-nav"
+    aria-expanded="false"
+    data-nav-toggle
+  >
+    <span class="site-header__toggle-label" data-nav-label-open>Menu</span>
+    <span class="site-header__toggle-label" data-nav-label-close hidden>Close</span>
+  </button>
+
+  <nav class="site-nav" id="site-nav" aria-label="Primary" data-nav>
+    <ul class="site-nav__list">
+      <li><a class="site-nav__link" href="/work/first-earth">First Earth</a></li>
+      <li><a class="site-nav__link" href="/journal">Journal</a></li>
+      <li><a class="site-nav__link" href="/experiments">Experiments</a></li>
+    </ul>
+  </nav>
 </header>
