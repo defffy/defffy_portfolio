@@ -1,0 +1,5 @@
+@use "../utils/container" as *;
+
+.post__article {
+  @include container();
+}

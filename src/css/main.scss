@@ -2,8 +2,10 @@
 @use "utils/type" as *;
 @use "partials/header";
 @use "partials/footer";
+@use "layouts/post";
 @use "modules/grid";
 @use "modules/image-grid";
+@use "modules/journal-list";
 @use "modules/large-link";
 @use "modules/project-hero";
 @use "modules/single-column";

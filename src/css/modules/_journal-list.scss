@@ -1,0 +1,57 @@
+@use "../utils/tokens" as *;
+@use "../utils/breakpoints" as *;
+@use "../utils/container" as *;
+@use "../utils/spacing" as *;
+@use "../utils/type" as *;
+
+// A long, scannable index of journal entries: one row per post, title paired
+// with its dateline. Rows are separated by hairline rules so the list reads as
+// a single column of records rather than a stack of cards.
+.journal-list {
+  @include container();
+  list-style: none;
+}
+
+/* .journal-list__item { */
+/*   border-top: 1px solid rgba($color-text, 0.12); */
+/**/
+/*   &:last-child { */
+/*     border-bottom: 1px solid rgba($color-text, 0.12); */
+/*   } */
+/* } */
+
+.journal-list__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: space("md");
+  padding-block: space("xs");
+  color: inherit;
+  text-decoration: none;
+
+  // Stack the dateline under the title on narrow screens so long titles never
+  // collide with the date.
+  @include below("phablet") {
+    flex-direction: column;
+    gap: space("xs");
+  }
+}
+
+.journal-list__title {
+  @include font("entry-title");
+}
+
+.journal-list__date {
+  @include font("body-small");
+  flex-shrink: 0;
+}
+
+.journal-list__link:hover,
+.journal-list__link:focus-visible {
+    box-shadow: 0 2px 0 0 $color-text; 
+}
+
+.journal-list__link:focus-visible {
+  outline: 2px solid $color-accent;
+  outline-offset: 4px;
+}

@@ -38,6 +38,22 @@ export default function (eleventyConfig) {
     return collection[(i + 1) % collection.length];
   });
 
+  // Format a Date as "Month YYYY" for post eyebrows and datelines.
+  eleventyConfig.addFilter("monthYear", (date) => {
+    if (!date) return "";
+    return new Date(date).toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+  });
+
+  // Machine-readable YYYY-MM-DD for <time datetime="…"> attributes.
+  eleventyConfig.addFilter("htmlDateString", (date) => {
+    if (!date) return "";
+    return new Date(date).toISOString().slice(0, 10);
+  });
+
   eleventyConfig.addGlobalData("currentYear", () => new Date().getFullYear());
 
   eleventyConfig.addTemplateFormats("yaml");

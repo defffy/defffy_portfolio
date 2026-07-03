@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: Journal
+---
+
+{% set module = { size: "lg" } %}
+{% include "modules/spacer.njk" %}
+
+<section class="single-column">
+  <h1 class="single-column__heading">Journal</h1>
+</section>
+
+{% set module = { size: "sm" } %}
+{% include "modules/spacer.njk" %}
+
+<ul class="journal-list">
+  {% for post in collections.journal | reverse %}
+    <li class="journal-list__item">
+      <a class="journal-list__link" href="{{ post.url }}">
+        <span class="journal-list__title">{{ post.data.title }}</span>
+        <time class="journal-list__date" datetime="{{ post.date | htmlDateString }}">
+          {{ post.date | monthYear }}
+        </time>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% set module = { size: "xl" } %}
+{% include "modules/spacer.njk" %}

@@ -1,0 +1,33 @@
+---
+layout: base.njk
+---
+
+{% set module = { size: "lg" } %}
+{% include "modules/spacer.njk" %}
+
+<section class="project-hero">
+  <div class="project-hero__text">
+    <h1 class="project-hero__title">{{ title }}</h1>
+    {% if date %}
+      <p class="project-hero__subhead">
+        <time datetime="{{ date | htmlDateString }}">{{ date | monthYear }}</time>
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+{% set module = { size: "sm" } %}
+{% include "modules/spacer.njk" %}
+
+<article class="post__article">
+    {{ content | safe }}
+</article>
+
+{# Close with a link to the next entry in the collection (wraps around). #}
+{% set nextPost = collections.journal | nextInCollection(page.url) %}
+{% if nextPost %}
+  {% set module = { size: "xl" } %}
+  {% include "modules/spacer.njk" %}
+  {% set module = { eyebrow: "Next Entry", headline: nextPost.data.title, link: nextPost.url } %}
+  {% include "modules/large-link.njk" %}
+{% endif %}
