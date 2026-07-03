@@ -42,7 +42,7 @@
 }
 
 .journal-list__date {
-  @include font("body-small");
+  @include font("body");
   flex-shrink: 0;
 }
 
