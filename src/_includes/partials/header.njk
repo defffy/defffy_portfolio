@@ -14,9 +14,21 @@
 
   <nav class="site-nav" id="site-nav" aria-label="Primary" data-nav>
     <ul class="site-nav__list">
-      <li><a class="site-nav__link" href="/work/first-earth">First Earth</a></li>
-      <li><a class="site-nav__link" href="/journal">Journal</a></li>
-      <li><a class="site-nav__link" href="/sketches">Sketches</a></li>
+      {% set navLinks = [
+        { href: "/work/first-earth", label: "First Earth" },
+        { href: "/journal", label: "Journal" },
+        { href: "/sketches", label: "Sketches" }
+      ] %}
+      {% for link in navLinks %}
+        {% set isCurrent = page.url == link.href or page.url == link.href + "/" %}
+        <li>
+          <a
+            class="site-nav__link{% if isCurrent %} is-current{% endif %}"
+            href="{{ link.href }}"
+            {% if isCurrent %}aria-current="page"{% endif %}
+          >{{ link.label }}</a>
+        </li>
+      {% endfor %}
     </ul>
   </nav>
 </header>

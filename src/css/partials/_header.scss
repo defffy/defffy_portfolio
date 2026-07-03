@@ -71,4 +71,8 @@
   &:focus-visible {
     text-decoration: underline;
   }
+
+  &.is-current {
+    font-weight: 500;
+  }
 }
