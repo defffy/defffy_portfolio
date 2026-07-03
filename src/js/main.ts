@@ -41,9 +41,15 @@ if (lightboxTriggers.length > 0) {
       <img class="lightbox__image" alt="" />
       <p class="lightbox__caption" data-lightbox-caption hidden></p>
     </div>
-    <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close image viewer">&times;</button>
-    <button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Previous image">&lsaquo;</button>
-    <button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Next image">&rsaquo;</button>
+    <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close image viewer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+    </button>
+    <button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
   `;
   document.body.appendChild(dialog);
 

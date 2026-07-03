@@ -121,9 +121,13 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.14);
   color: #fff;
-  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 
   &:hover {
     background: rgba(255, 255, 255, 0.28);
