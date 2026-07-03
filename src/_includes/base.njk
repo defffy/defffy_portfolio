@@ -6,7 +6,7 @@
     <title>{{ title }}</title>
     <style>{% include "build/main.css" %}</style>
   </head>
-  <body>
+  <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
     {% include "partials/header.njk" %}
     <main>{{ content | safe }}</main>
     {% include "partials/footer.njk" %}

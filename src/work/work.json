@@ -1,4 +1,5 @@
 {
-  "layout": "page.njk",
+  "layout": "work.njk",
+  "bodyClass": "layout-work",
   "tags": ["work"]
 }
