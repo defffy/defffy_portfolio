@@ -1,0 +1,49 @@
+layout: page.njk
+title: Strata 
+
+modules:
+  - type: spacer
+    size: lg
+
+  - type: project-hero
+    image:
+      src: Strata/strata_01.jpg
+      alt: ''
+      preset: banner
+    title: Strata 
+    subhead: November 2025
+
+  - type: spacer
+    size: sm
+
+  - type: single-column
+    body: A collection that is the result my explorations with processing and shaders. 
+
+  - type: spacer
+    size: lg
+
+  - type: image-grid
+    heading: Selected works
+    columns: 3
+    images:
+      - src: Strata/strata_01.jpg
+        alt: 
+        caption: Strata 01 
+      - src: Strata/strata_02.jpg
+        alt: 
+        caption: Strata 02 
+      - src: Strata/strata_07.jpg
+        alt: 
+        caption: Strata 07 
+      - src: Strata/strata_10.jpg
+        alt: 
+        caption: Strata 10
+      - src: Strata/strata_06.jpg
+        alt: 
+        caption: Strata 06
+
+
+
+
+  - type: spacer
+    size: xl
