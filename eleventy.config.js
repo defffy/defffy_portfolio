@@ -28,6 +28,16 @@ export default function (eleventyConfig) {
     return hasMarkdown ? marked.parse(body) : body;
   });
 
+  // Given a collection and the current page URL, return the next item,
+  // wrapping around to the first so the "next work" link always has somewhere
+  // to go. Returns null if the URL isn't in the collection (or it's empty).
+  eleventyConfig.addFilter("nextInCollection", (collection, url) => {
+    if (!collection || collection.length === 0) return null;
+    const i = collection.findIndex((item) => item.url === url);
+    if (i === -1) return null;
+    return collection[(i + 1) % collection.length];
+  });
+
   eleventyConfig.addGlobalData("currentYear", () => new Date().getFullYear());
 
   eleventyConfig.addTemplateFormats("yaml");

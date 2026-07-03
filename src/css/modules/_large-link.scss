@@ -1,0 +1,41 @@
+@use "../utils/tokens" as *;
+@use "../utils/container" as *;
+@use "../utils/type" as *;
+
+.large-link {
+  @include container("wide");
+}
+
+.large-link__anchor {
+  display: block;
+  padding-bottom: space("xl");
+  color: inherit;
+  text-decoration: none;
+}
+
+.large-link__eyebrow {
+  @include font("body-small");
+  display: block;
+  /* margin-bottom: 0.75rem; */
+  color: $color-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.large-link__headline {
+  @include font("h1");
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+}
+
+.large-link__anchor:hover .large-link__headline,
+.large-link__anchor:focus-visible .large-link__headline {
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+}
+
+.large-link__anchor:focus-visible {
+  outline: 2px solid $color-accent;
+  outline-offset: 4px;
+}

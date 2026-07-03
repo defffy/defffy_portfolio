@@ -3,8 +3,19 @@ layout: base.njk
 ---
 
 {% for module in modules %}
-  {% set knownTypes = ["grid", "hero", "image-grid", "project-hero", "single-column", "spacer"] %}
+  {% set knownTypes = ["grid", "hero", "image-grid", "large-link", "project-hero", "single-column", "spacer"] %}
   {% if module.type in knownTypes %}
     {% include "modules/" + module.type + ".njk" %}
   {% endif %}
 {% endfor %}
+
+{# On work pages, close with a link to the next project in the collection. #}
+{% if tags and "work" in tags %}
+  {% set nextWork = collections.work | nextInCollection(page.url) %}
+  {% if nextWork %}
+    {% set module = { size: "xl" } %}
+    {% include "modules/spacer.njk" %}
+    {% set module = { eyebrow: "Next project", headline: nextWork.data.title, link: nextWork.url } %}
+    {% include "modules/large-link.njk" %}
+  {% endif %}
+{% endif %}

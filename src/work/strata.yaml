@@ -1,5 +1,5 @@
-layout: page.njk
-title: Strata 
+title: Strata
+date: 2025-11-01
 
 modules:
   - type: spacer
@@ -41,9 +41,3 @@ modules:
       - src: Strata/strata_06.jpg
         alt: 
         caption: Strata 06
-
-
-
-
-  - type: spacer
-    size: xl

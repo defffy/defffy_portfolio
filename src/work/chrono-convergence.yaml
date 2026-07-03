@@ -1,5 +1,5 @@
-layout: page.njk
-title: Chrono Convergence 
+title: Chrono Convergence
+date: 2025-07-01
 
 modules:
   - type: spacer
@@ -39,7 +39,4 @@ modules:
         alt: ''
         caption: Seed 222954
       - src: Chrono%20Convergence/chrono_convergence_27_86779.png
-        caption: Seed 86779 
-
-  - type: spacer
-    size: xl
+        caption: Seed 86779

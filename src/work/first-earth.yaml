@@ -1,5 +1,5 @@
-layout: page.njk
-title: First Earth 
+title: First Earth
+date: 2025-08-01
 
 modules:
   - type: spacer
@@ -47,7 +47,3 @@ modules:
       - src: First%20Earth/fe_drive_through_the_country.png
         alt: Drive Through The Country
         caption: Drive Through The Country
-
-
-  - type: spacer
-    size: xl
