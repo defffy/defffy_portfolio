@@ -9,6 +9,39 @@
 @use "modules/single-column";
 @use "modules/spacer";
 
+// Opt into CSS-native cross-document view transitions so every same-origin
+// navigation animates. The root snapshots cross-fade in and out.
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+::view-transition-old(root) {
+  animation: 200ms ease both vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 200ms ease both vt-fade-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
 *,
 *::before,
 *::after {
