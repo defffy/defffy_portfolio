@@ -18,8 +18,7 @@
   display: block;
   /* margin-bottom: 0.75rem; */
   color: $color-muted;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: capitalize;
 }
 
 .large-link__headline {
