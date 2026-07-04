@@ -1,0 +1,102 @@
+layout: page.njk
+title:  Sketches
+
+modules:
+  - type: spacer
+    size: lg
+
+  - type: single-column
+    heading: Sketches
+    body: A collection of random studies and WIP
+
+  - type: spacer
+    size: lg
+
+  - type: image-grid
+    heading: Structural 06
+    images:
+      - src: Structural06/98842.png
+        alt:
+        caption: Structural 06 98842
+      - src: Structural06/81587.png
+        alt:
+        caption: Structural 06 81587
+      - src: Structural06/81165.png
+        alt:
+        caption: Structural 06 81165
+
+  - type: spacer
+    size: lg
+
+  - type: image-grid
+    heading: Screened Walkers 08
+    images:
+      - src: ScreenedWalkers08/14404.png
+        alt:
+        caption: ScreenedWalkers 08 14404
+      - src: ScreenedWalkers08/22711.png
+        alt:
+        caption: ScreenedWalkers 08 22711 
+      - src: ScreenedWalkers08/100173.png
+        alt:
+        caption: ScreenedWalkers 08 100173.png 
+      - src: ScreenedWalkers08/97690.png
+        alt:
+        caption: ScreenedWalkers 08 97690.png 
+
+  - type: spacer
+    size: lg
+
+  - type: image-grid
+    heading: Moiré Study 04  
+    columns: 4
+    images:
+      - src: MoireStudy04/234777.png
+        alt:
+        caption: Moiré Study 04 234777 
+      - src: MoireStudy04/375045.png
+        alt:
+        caption: Moiré Study 04 375045 
+      - src: MoireStudy04/293170.png
+        alt:
+        caption: Moiré Study 04 293170 
+      - src: MoireStudy04/236696.png
+        alt:
+        caption: Moiré Study 04 236696 
+
+  - type: spacer
+    size: lg
+
+  - type: image-grid
+    heading: Mixnmatch 01
+    columns: 4
+    images:
+      - src: Mixnmatch01/85916.png 
+        alt: 
+        caption: Mixnmatch 01 85916 
+      - src: Mixnmatch01/92897png.png
+        alt: 
+        caption: Mixnmatch 01 92897
+      - src: Mixnmatch01/49514.png
+        alt: 
+        caption: Mixnmatch 01 49514
+      - src: Mixnmatch01/77318.png
+        alt: 
+        caption: Mixnmatch 01 77318 
+
+  - type: spacer
+    size: lg
+
+  - type: image-grid
+    heading: Noisy Flowers
+    images:
+      - src: NoisyFlowers/2054124658.png
+        alt:
+        caption: Noisy Flowers 2054124658
+      - src: NoisyFlowers/2064870974.png
+        alt:
+        caption: Noisy Flowers 2064870974 
+      - src: NoisyFlowers/2064974400.png
+        alt:
+        caption: Noisy Flowers 2064974400 
+
