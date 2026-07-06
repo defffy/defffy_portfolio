@@ -1,0 +1,62 @@
+// @font-face declarations for the self-hosted Pangram Pangram families.
+// Files live in src/static/fonts/ and are copied to /static/fonts/ at build.
+// Each family maps a woff2 file to its weight/style so the browser can pick
+// the right cut from `font-weight` / `font-style` alone.
+
+// PP Neue York — serif display
+@font-face {
+  font-family: "PP Neue York";
+  src: url("/static/fonts/PPNeueYork-NormalRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue York";
+  src: url("/static/fonts/PPNeueYork-NormalRegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue York";
+  src: url("/static/fonts/PPNeueYork-NormalMedium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue York";
+  src: url("/static/fonts/PPNeueYork-NormalMediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+// PP Museum — serif text
+@font-face {
+  font-family: "PP Museum";
+  src: url("/static/fonts/PPMuseum-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Museum";
+  src: url("/static/fonts/PPMuseum-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Museum";
+  src: url("/static/fonts/PPMuseum-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}

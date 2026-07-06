@@ -5,4 +5,6 @@ $color-muted: #6b6b6b;
 $color-accent: #2563eb;
 
 // Fonts
-$font-sans: system-ui, -apple-system, sans-serif;
+// Primary is the display face for headings; secondary carries running text.
+$font-primary: "PP Museum", Georgia, "Times New Roman", serif;
+$font-secondary: "PP Neue York", Georgia, "Times New Roman", serif;

@@ -1,0 +1,2 @@
+# Font files placed in src/static/ are copied verbatim to the site root.
+# e.g. src/static/fonts/inter.woff2  ->  /static/fonts/inter.woff2

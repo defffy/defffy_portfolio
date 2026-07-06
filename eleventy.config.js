@@ -69,6 +69,10 @@ export default function (eleventyConfig) {
     },
   });
 
+  // Copy static assets (fonts, etc.) verbatim to the site root.
+  // e.g. src/static/fonts/inter.woff2 -> /static/fonts/inter.woff2
+  eleventyConfig.addPassthroughCopy({ "src/static": "static" });
+
   eleventyConfig.ignores.add("src/modules/");
 
   eleventyConfig.amendLibrary("njk", (env) => {
@@ -78,6 +82,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addWatchTarget("src/css/");
   eleventyConfig.addWatchTarget("src/js/");
   eleventyConfig.addWatchTarget("src/modules/");
+  eleventyConfig.addWatchTarget("src/static/");
 
   eleventyConfig.setServerOptions({
     host: "0.0.0.0",

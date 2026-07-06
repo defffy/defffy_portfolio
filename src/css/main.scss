@@ -1,5 +1,6 @@
 @use "utils/tokens" as *;
 @use "utils/type" as *;
+@use "utils/fonts";
 @use "partials/header";
 @use "partials/footer";
 @use "layouts/post";
@@ -54,7 +55,6 @@
 
 body {
   @include font("body");
-  font-family: $font-sans;
   color: $color-text;
   background: $color-bg;
   display: flex;
