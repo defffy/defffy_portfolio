@@ -61,6 +61,11 @@
   @include font("body-small");
   color: $color-muted;
   margin-top: 0.5rem;
+
+  .image-grid__item:hover &,
+  .image-grid__item:focus-within & {
+    color: $color-text;
+  }
 }
 
 // Lightbox — a single dialog built in JS and shared by every image grid. -----
