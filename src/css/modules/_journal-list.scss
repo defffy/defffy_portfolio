@@ -12,14 +12,6 @@
   list-style: none;
 }
 
-/* .journal-list__item { */
-/*   border-top: 1px solid rgba($color-text, 0.12); */
-/**/
-/*   &:last-child { */
-/*     border-bottom: 1px solid rgba($color-text, 0.12); */
-/*   } */
-/* } */
-
 .journal-list__link {
   display: flex;
   align-items: center;
@@ -33,6 +25,7 @@
   // Stack the dateline under the title on narrow screens so long titles never
   // collide with the date.
   @include below("phablet") {
+    align-items: flex-start;
     flex-direction: column;
     gap: space("xs");
   }
