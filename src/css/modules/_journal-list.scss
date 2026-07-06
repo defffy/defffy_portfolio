@@ -28,6 +28,7 @@
   padding-block: space("xs");
   color: inherit;
   text-decoration: none;
+  color: $color-muted;
 
   // Stack the dateline under the title on narrow screens so long titles never
   // collide with the date.
@@ -48,7 +49,7 @@
 
 .journal-list__link:hover,
 .journal-list__link:focus-visible {
-    box-shadow: 0 2px 0 0 $color-text; 
+  color: $color-text;
 }
 
 .journal-list__link:focus-visible {
